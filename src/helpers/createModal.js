@@ -1,31 +1,19 @@
 import * as basicLightbox from 'basiclightbox';
-import { closeModal } from './closeModal';
 
-function createModal(product) {
+function createModal(instrument) {
   const instance = basicLightbox.create(
     `
-	   <div class='modal'>
-        <img src="${product.img}" alt="${product.name}" width='300'/>
-        <h2>${product.name}</h2>
-        <h3>${product.price}</h3>
-        <p>${product.description}</p>
-        <div>
-          <button class='js-favorite'>Add to favorite</button>
-          <button class='js-basket'>Add to basket</button>
-        </div>
-      </div>
-    
-`,
-    {
-      handler: null,
-      onShow(instance) {
-        this.handler = closeModal.bind(instance);
-        document.addEventListener('keydown', this.handler);
-      },
-      onClose() {
-        document.removeEventListener('keydown', this.handler);
-      },
-    }
+<div class='modal'>
+<button class='closeModalBtn'>X</button>
+      <img src="${instrument.img}" alt="${instrument.name}" width='600'/>
+      <h2>${instrument.name}</h2>
+
+      <p >${instrument.description}</p>
+      <button class='favoriteBtn'>Add to favorite</button>
+      <button class='basketBtn'>Add to basket</button>
+</div>
+    `,
+    {}
   );
   instance.show();
 }
