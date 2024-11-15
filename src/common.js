@@ -1,3 +1,4 @@
 const FAVORITE_KEY = 'favorite';
+const BASKET_KEY = 'basket';
 
-export { FAVORITE_KEY };
+export { FAVORITE_KEY, BASKET_KEY };

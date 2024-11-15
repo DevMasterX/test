@@ -1,11 +1,10 @@
 import { createMarkup } from './helpers/createMarkup';
-import { FAVORITE_KEY } from './common';
 import { onClick } from './helpers/onClick';
+import { BASKET_KEY } from './common';
 
 const list = document.querySelector('.js-list');
+const savedToBasket = JSON.parse(localStorage.getItem(BASKET_KEY)) ?? [];
 
-const savedInstruments = JSON.parse(localStorage.getItem(FAVORITE_KEY)) ?? [];
-
-createMarkup(savedInstruments, list);
+createMarkup(savedToBasket, list);
 
 list.addEventListener('click', onClick);
