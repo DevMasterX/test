@@ -1,4 +1,4 @@
-function createMarkup(arr, list) {
+function createMarkup(arr, list, pageType) {
   let markup;
   if (arr.length) {
     markup = arr
@@ -9,8 +9,23 @@ function createMarkup(arr, list) {
       <h2>${name}</h2>
       
       <p ><a class='js-info' href='#'>More information</a></p>
-      <button class='favoriteBtn'>Add to favorite</button>
-      <button class='basketBtn'>Add to basket</button>
+${
+  pageType === 'basket'
+    ? "<button class='favoriteBtn'>Add to favorite</button><button class='removeFromBasketBtn'>Remove from basket</button>"
+    : ''
+}
+${
+  pageType === 'favorite'
+    ? "<button class='removeFavoriteBtn'>Remove from favorites</button><button class='basketBtn'>Add to basket</button>"
+    : ''
+}
+${
+  pageType === 'main'
+    ? "<button class='favoriteBtn'>Add to favorite</button><button class='basketBtn'>Add to basket</button>"
+    : ''
+}
+
+
     </li>
     `;
       })
